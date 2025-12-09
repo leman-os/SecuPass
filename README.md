@@ -12,10 +12,14 @@ The principle of building a password is 3 random numbers, a combination of the f
 Инструкция по запуску контейнера (Docker container start instruction)
 
 # 1. Соберите образ (build image)
+```
 docker build -t password-generator:latest .
-
+```
 # 2. Запустите контейнер (start container)
+```
 docker run -d -p 8080:80 --name password-gen password-generator:latest
-
+```
 # 3. Откройте в браузере (open in browser)
+```
 http://localhost:8080
+```

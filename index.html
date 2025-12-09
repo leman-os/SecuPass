@@ -24,40 +24,21 @@
             const [copied, setCopied] = useState(false);
             const [isGenerating, setIsGenerating] = useState(false);
 
-            const _0x4a2b = 'QXJidXp8QmFuYW58VmV0ZXJ8R29yb2R8RGVyZXZvfEV6aGlrfFpoZWxlem98WmVtbHlhfEl2YW58S25pZ2F8TGltb258TW9yZXxOZWJvfE9ibGFrb3xQdGl0c2F8UmVrYXxTb2xudHNlfFRpZ3J8VXRyb3xGb25hcnxLaG9sb2R8VHN2ZXRva3xDaGFzaGthfFNoa29sYXxZYWJsb2tvfEtyaWNoaXR8UHJpdmV0fEJlemhpdHxTdmV0aXR8SWdyYWV0fFBveWV0fENoaXRhZXR8TGV0aXR8RHVtYWV0fFNwZXNoaXR8VGFudHN1ZXR8UHJ5Z2FldHxTbWV5b3RzeWF8TWVjaHRhZXR8U3Ryb2l0fEFwZWxzaW58QmVyeW96YXxWaXNobnlhfEdpdGFyYXxEb3poZHxFbm90fFpoaXJhZnxaaW1hfElyaXN8S2FrdHVzfExpc2F8TWV0ZWx8Tm9jaHxPc2VufFBhbG1hfFJhZHVnYXxTbmVnfFRlYXRyfFVsaXRzYXxGbGFnfEtob215YWt8VHNpcmt8Q2hlcm5pa2F8U2hhcmZ8U2hjaGVub2t8RWtob3xZdXJ0YXxZYWdvZGF8QWxtYXp8QmVsa2F8Vm9sbmF8R3JvemF8RGVsZmlufFlvbGthfFpoZW1jaHVnfFphbW9rfElnbGF8S2FtZW58TGVudGF8TWVzeWF0c3xOb3Nva3xPcmVraHxQZXNva3xSb21hc2hrYXxTaXJlbnxUdW1hbnxVem9yfEZvbnRhbnxLaGxlYnxUc2VwfENoYXlrYXxTaGlzaGthfFNoY2hpdHxFbXV8WXVsYXxZYWtvcnxCYWJvY2hrYXxWb3JvbmF8R3VzfER5YXRlbHxaaGFiYXxaZWJyYXxLcm90fExvc3xNdWtoYXxOb3JrYXxQYXZsaW58Unlzc3xTb3ZhfFR5dWxlbnxVemh8VHNhcGx5YXxSaXN1ZXR8VHJ1Yml0fFVjaGl0fFRzdmV0eW90fFNodW1pdHxTaGNob2xrYWV0';
-
-            const _0x7f9c = 'QXJidXp8QmFuYW58VmV0ZXJ8R29yb2R8RGVyZXZvfEV6aGlrfFpoZWxlem98WmVtbHlhfEl2YW58S25pZ2F8TGltb258TW9yZXxOZWJvfE9ibGFrb3xQdGl0c2F8UmVrYXxTb2xudHNlfFRpZ3J8VXRyb3xGb25hcnxLaG9sb2R8VHN2ZXRva3xDaGFzaGthfFNoa29sYXxZYWJsb2tvfEtyaWNoaXR8UHJpdmV0fEJlemhpdHxTdmV0aXR8SWdyYWV0fFBveWV0fENoaXRhZXR8TGV0aXR8RHVtYWV0fFNwZXNoaXR8VGFudHN1ZXR8UHJ5Z2FldHxTbWV5b3RzeWF8TWVjaHRhZXR8U3Ryb2l0fEFwZWxzaW58QmVyeW96YXxWaXNobnlhfEdpdGFyYXxEb3poZHxFbm90fFpoaXJhZnxaaW1hfElyaXN8S2FrdHVzfExpc2F8TWV0ZWx8Tm9jaHxPc2VufFBhbG1hfFJhZHVnYXxTbmVnfFRlYXRyfFVsaXRzYXxGbGFnfEtob215YWt8VHNpcmt8Q2hlcm5pa2F8U2hhcmZ8U2hjaGVub2t8RWtob3xZdXJ0YXxZYWdvZGF8QWxtYXp8QmVsa2F8Vm9sbmF8R3JvemF8RGVsZmlufFlvbGthfFpoZW1jaHVnfFphbW9rfElnbGF8S2FtZW58TGVudGF8TWVzeWF0c3xOb3Nva3xPcmVraHxQZXNva3xSb21hc2hrYXxTaXJlbnxUdW1hbnxVem9yfEZvbnRhbnxLaGxlYnxUc2VwfENoYXlrYXxTaGlzaGthfFNoY2hpdHxFbXV8WXVsYXxZYWtvcnxCYWJvY2hrYXxWb3JvbmF8R3VzfER5YXRlbHxaaGFiYXxaZWJyYXxLcm90fExvc3xNdWtoYXxOb3JrYXxQYXZsaW58Unlzc3xTb3ZhfFR5dWxlbnxVemh8VHNhcGx5YXxSaXN1ZXR8VHJ1Yml0fFVjaGl0fFRzdmV0eW90fFNodW1pdHxTaGNob2xrYWV0';
+            const _0xd1a2 = 'QXJidXp8QmFuYW58VmV0ZXJ8R29yb2R8RGVyZXZvfEV6aGlrfFpoZWxlem98WmVtbHlhfEl2YW58S25pZ2F8TGltb258TW9yZXxOZWJvfE9ibGFrb3xQdGl0c2F8UmVrYXxTb2xudHNlfFRpZ3J8VXRyb3xGb25hcnxLaG9sb2R8VHN2ZXRva3xDaGFzaGthfFNoa29sYXxZYWJsb2tvfEtyaWNoaXR8UHJpdmV0fEJlemhpdHxTdmV0aXR8SWdyYWV0fFBveWV0fENoaXRhZXR8TGV0aXR8RHVtYWV0fFNwZXNoaXR8VGFudHN1ZXR8UHJ5Z2FldHxTbWV5b3RzeWF8TWVjaHRhZXR8U3Ryb2l0fEFwZWxzaW58QmVyeW96YXxWaXNobnlhfEdpdGFyYXxEb3poZHxFbm90fFpoaXJhZnxaaW1hfElyaXN8S2FrdHVzfExpc2F8TWV0ZWx8Tm9jaHxPc2VufFBhbG1hfFJhZHVnYXxTbmVnfFRlYXRyfFVsaXRzYXxGbGFnfEtob215YWt8VHNpcmt8Q2hlcm5pa2F8U2hhcmZ8U2hjaGVub2t8RWtob3xZdXJ0YXxZYWdvZGF8QWxtYXp8QmVsa2F8Vm9sbmF8R3JvemF8RGVsZmlufFlvbGthfFpoZW1jaHVnfFphbW9rfElnbGF8S2FtZW58TGVudGF8TWVzeWF0c3xOb3Nva3xPcmVraHxQZXNva3xSb21hc2hrYXxTaXJlbnxUdW1hbnxVem9yfEZvbnRhbnxLaGxlYnxUc2VwfENoYXlrYXxTaGlzaGthfFNoY2hpdHxFbXV8WXVsYXxZYWtvcnxCYWJvY2hrYXxWb3JvbmF8R3VzfER5YXRlbHxaaGFiYXxaZWJyYXxLcm90fExvc3xNdWtoYXxOb3JrYXxQYXZsaW58Unlzc3xTb3ZhfFR5dWxlbnxVemh8VHNhcGx5YXxSaXN1ZXR8VHJ1Yml0fFVjaGl0fFRzdmV0eW90fFNodW1pdHxTaGNob2xrYWV0';
+            const _0xe3b4 = 'QXJidXp8QmFuYW58VmV0ZXJ8R29yb2R8RGVyZXZvfEV6aGlrfFpoZWxlem98WmVtbHlhfEl2YW58S25pZ2F8TGltb258TW9yZXxOZWJvfE9ibGFrb3xQdGl0c2F8UmVrYXxTb2xudHNlfFRpZ3J8VXRyb3xGb25hcnxLaG9sb2R8VHN2ZXRva3xDaGFzaGthfFNoa29sYXxZYWJsb2tvfEtyaWNoaXR8UHJpdmV0fEJlemhpdHxTdmV0aXR8SWdyYWV0fFBveWV0fENoaXRhZXR8TGV0aXR8RHVtYWV0fFNwZXNoaXR8VGFudHN1ZXR8UHJ5Z2FldHxTbWV5b3RzeWF8TWVjaHRhZXR8U3Ryb2l0fEFwZWxzaW58QmVyeW96YXxWaXNobnlhfEdpdGFyYXxEb3poZHxFbm90fFpoaXJhZnxaaW1hfElyaXN8S2FrdHVzfExpc2F8TWV0ZWx8Tm9jaHxPc2VufFBhbG1hfFJhZHVnYXxTbmVnfFRlYXRyfFVsaXRzYXxGbGFnfEtob215YWt8VHNpcmt8Q2hlcm5pa2F8U2hhcmZ8U2hjaGVub2t8RWtob3xZdXJ0YXxZYWdvZGF8QWxtYXp8QmVsa2F8Vm9sbmF8R3JvemF8RGVsZmlufFlvbGthfFpoZW1jaHVnfFphbW9rfElnbGF8S2FtZW58TGVudGF8TWVzeWF0c3xOb3Nva3xPcmVraHxQZXNva3xSb21hc2hrYXxTaXJlbnxUdW1hbnxVem9yfEZvbnRhbnxLaGxlYnxUc2VwfENoYXlrYXxTaGlzaGthfFNoY2hpdHxFbXV8WXVsYXxZYWtvcnxCYWJvY2hrYXxWb3JvbmF8R3VzfER5YXRlbHxaaGFiYXxaZWJyYXxLcm90fExvc3xNdWtoYXxOb3JrYXxQYXZsaW58Unlzc3xTb3ZhfFR5dWxlbnxVemh8VHNhcGx5YXxSaXN1ZXR8VHJ1Yml0fFVjaGl0fFRzdmV0eW90fFNodW1pdHxTaGNob2xrYWV0';
 
             const specialChars = ['!', '@', '#', '$', '%', '&', '*', '?', '+', '='];
 
             const decodeData = () => {
-                const ruWords = atob(_0x4a2b).split('|');
-                const enWords = atob(_0x7f9c).split('|');
+                const ruData = atob(_0xd1a2).split('|');
+                const enData = atob(_0xe3b4).split('|');
                 const mapping = {};
 
-                const russianWords = [
-                    'Арбуз', 'Банан', 'Ветер', 'Город', 'Дерево', 'Ежик', 'Железо', 'Земля',
-                    'Иван', 'Книга', 'Лимон', 'Море', 'Небо', 'Облако', 'Птица', 'Река',
-                    'Солнце', 'Тигр', 'Утро', 'Фонарь', 'Холод', 'Цветок', 'Чашка', 'Школа',
-                    'Яблоко', 'Кричит', 'Привет', 'Бежит', 'Светит', 'Играет', 'Поёт', 'Читает',
-                    'Летит', 'Думает', 'Спешит', 'Танцует', 'Прыгает', 'Смеётся', 'Мечтает', 'Строит',
-                    'Апельсин', 'Берёза', 'Вишня', 'Гитара', 'Дождь', 'Енот', 'Жираф', 'Зима',
-                    'Ирис', 'Кактус', 'Лиса', 'Метель', 'Ночь', 'Осень', 'Пальма', 'Радуга',
-                    'Снег', 'Театр', 'Улица', 'Флаг', 'Хомяк', 'Цирк', 'Черника', 'Шарф',
-                    'Щенок', 'Эхо', 'Юрта', 'Ягода', 'Алмаз', 'Белка', 'Волна', 'Гроза',
-                    'Дельфин', 'Ёлка', 'Жемчуг', 'Замок', 'Игла', 'Камень', 'Лента', 'Месяц',
-                    'Носок', 'Орех', 'Песок', 'Ромашка', 'Сирень', 'Туман', 'Узор', 'Фонтан',
-                    'Хлеб', 'Цепь', 'Чайка', 'Шишка', 'Щит', 'Эму', 'Юла', 'Якорь',
-                    'Бабочка', 'Ворона', 'Гусь', 'Дятел', 'Жаба', 'Зебра', 'Крот', 'Лось',
-                    'Муха', 'Норка', 'Павлин', 'Рысь', 'Сова', 'Тюлень', 'Уж', 'Цапля',
-                    'Рисует', 'Трубит', 'Учит', 'Цветёт', 'Шумит', 'Щёлкает'
-                ];
-
-                russianWords.forEach((word, i) => {
-                    mapping[word] = enWords[i];
+                ruData.forEach((word, i) => {
+                    mapping[word] = enData[i];
                 });
 
-                return { words: russianWords, trans: mapping };
+                return { words: ruData, trans: mapping };
             };
 
             const generatePassword = () => {
@@ -93,9 +74,38 @@
             }, []);
 
             const copyToClipboard = () => {
-                navigator.clipboard.writeText(password);
-                setCopied(true);
-                setTimeout(() => setCopied(false), 2000);
+                if (navigator.clipboard && window.isSecureContext) {
+                    navigator.clipboard.writeText(password).then(() => {
+                        setCopied(true);
+                        setTimeout(() => setCopied(false), 2000);
+                    }).catch(() => {
+                        fallbackCopy();
+                    });
+                } else {
+                    fallbackCopy();
+                }
+            };
+
+            const fallbackCopy = () => {
+                const textArea = document.createElement('textarea');
+                textArea.value = password;
+                textArea.style.position = 'fixed';
+                textArea.style.left = '-999999px';
+                textArea.style.top = '-999999px';
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+
+                try {
+                    const successful = document.execCommand('copy');
+                    textArea.remove();
+                    if (successful) {
+                        setCopied(true);
+                        setTimeout(() => setCopied(false), 2000);
+                    }
+                } catch (err) {
+                    textArea.remove();
+                }
             };
 
             const highlightAbbreviation = () => {

@@ -14,7 +14,7 @@ The principle of building a password is 3 random numbers, a combination of the f
 # 1. Соберите образ (build image)
 docker build -t password-generator:latest .
 
-# 2. Запустите контейнер (start cintainer)
+# 2. Запустите контейнер (start container)
 docker run -d -p 8080:80 --name password-gen password-generator:latest
 
 # 3. Откройте в браузере (open in browser)

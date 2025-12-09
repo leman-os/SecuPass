@@ -1,8 +1,9 @@
 # SecuPass
-Rus Password generation service
+Сервис генерации запоминающихся паролей. (Rus Password generation service)
 
 Данный простой сервис предназначен для генерации надежных, но в то же время запоминающихся паролей. 
 Принцип построения пароля - 3 случайных числа, комбинация из первых трех букв трех слов, с заглавной буквы и спецсимвол. Запомнив три слова на русском языке не составит труда запомнить весь пароль.
+
 <img width="1388" height="816" alt="image" src="https://github.com/user-attachments/assets/41fcc6d3-5375-4013-abe0-d5702f250d3f" />
 
 (This simple service is designed to generate reliable, but at the same time memorable passwords. 

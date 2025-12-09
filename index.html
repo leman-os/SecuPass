@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор паролей</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        const PasswordGenerator = () => {
+            const [password, setPassword] = useState('');
+            const [russianPhrase, setRussianPhrase] = useState('');
+            const [transcription, setTranscription] = useState('');
+            const [abbreviation, setAbbreviation] = useState('');
+            const [copied, setCopied] = useState(false);
+            const [isGenerating, setIsGenerating] = useState(false);
+
+            const _0x4a2b = 'QXJidXp8QmFuYW58VmV0ZXJ8R29yb2R8RGVyZXZvfEV6aGlrfFpoZWxlem98WmVtbHlhfEl2YW58S25pZ2F8TGltb258TW9yZXxOZWJvfE9ibGFrb3xQdGl0c2F8UmVrYXxTb2xudHNlfFRpZ3J8VXRyb3xGb25hcnxLaG9sb2R8VHN2ZXRva3xDaGFzaGthfFNoa29sYXxZYWJsb2tvfEtyaWNoaXR8UHJpdmV0fEJlemhpdHxTdmV0aXR8SWdyYWV0fFBveWV0fENoaXRhZXR8TGV0aXR8RHVtYWV0fFNwZXNoaXR8VGFudHN1ZXR8UHJ5Z2FldHxTbWV5b3RzeWF8TWVjaHRhZXR8U3Ryb2l0fEFwZWxzaW58QmVyeW96YXxWaXNobnlhfEdpdGFyYXxEb3poZHxFbm90fFpoaXJhZnxaaW1hfElyaXN8S2FrdHVzfExpc2F8TWV0ZWx8Tm9jaHxPc2VufFBhbG1hfFJhZHVnYXxTbmVnfFRlYXRyfFVsaXRzYXxGbGFnfEtob215YWt8VHNpcmt8Q2hlcm5pa2F8U2hhcmZ8U2hjaGVub2t8RWtob3xZdXJ0YXxZYWdvZGF8QWxtYXp8QmVsa2F8Vm9sbmF8R3JvemF8RGVsZmlufFlvbGthfFpoZW1jaHVnfFphbW9rfElnbGF8S2FtZW58TGVudGF8TWVzeWF0c3xOb3Nva3xPcmVraHxQZXNva3xSb21hc2hrYXxTaXJlbnxUdW1hbnxVem9yfEZvbnRhbnxLaGxlYnxUc2VwfENoYXlrYXxTaGlzaGthfFNoY2hpdHxFbXV8WXVsYXxZYWtvcnxCYWJvY2hrYXxWb3JvbmF8R3VzfER5YXRlbHxaaGFiYXxaZWJyYXxLcm90fExvc3xNdWtoYXxOb3JrYXxQYXZsaW58Unlzc3xTb3ZhfFR5dWxlbnxVemh8VHNhcGx5YXxSaXN1ZXR8VHJ1Yml0fFVjaGl0fFRzdmV0eW90fFNodW1pdHxTaGNob2xrYWV0';
+
+            const _0x7f9c = 'QXJidXp8QmFuYW58VmV0ZXJ8R29yb2R8RGVyZXZvfEV6aGlrfFpoZWxlem98WmVtbHlhfEl2YW58S25pZ2F8TGltb258TW9yZXxOZWJvfE9ibGFrb3xQdGl0c2F8UmVrYXxTb2xudHNlfFRpZ3J8VXRyb3xGb25hcnxLaG9sb2R8VHN2ZXRva3xDaGFzaGthfFNoa29sYXxZYWJsb2tvfEtyaWNoaXR8UHJpdmV0fEJlemhpdHxTdmV0aXR8SWdyYWV0fFBveWV0fENoaXRhZXR8TGV0aXR8RHVtYWV0fFNwZXNoaXR8VGFudHN1ZXR8UHJ5Z2FldHxTbWV5b3RzeWF8TWVjaHRhZXR8U3Ryb2l0fEFwZWxzaW58QmVyeW96YXxWaXNobnlhfEdpdGFyYXxEb3poZHxFbm90fFpoaXJhZnxaaW1hfElyaXN8S2FrdHVzfExpc2F8TWV0ZWx8Tm9jaHxPc2VufFBhbG1hfFJhZHVnYXxTbmVnfFRlYXRyfFVsaXRzYXxGbGFnfEtob215YWt8VHNpcmt8Q2hlcm5pa2F8U2hhcmZ8U2hjaGVub2t8RWtob3xZdXJ0YXxZYWdvZGF8QWxtYXp8QmVsa2F8Vm9sbmF8R3JvemF8RGVsZmlufFlvbGthfFpoZW1jaHVnfFphbW9rfElnbGF8S2FtZW58TGVudGF8TWVzeWF0c3xOb3Nva3xPcmVraHxQZXNva3xSb21hc2hrYXxTaXJlbnxUdW1hbnxVem9yfEZvbnRhbnxLaGxlYnxUc2VwfENoYXlrYXxTaGlzaGthfFNoY2hpdHxFbXV8WXVsYXxZYWtvcnxCYWJvY2hrYXxWb3JvbmF8R3VzfER5YXRlbHxaaGFiYXxaZWJyYXxLcm90fExvc3xNdWtoYXxOb3JrYXxQYXZsaW58Unlzc3xTb3ZhfFR5dWxlbnxVemh8VHNhcGx5YXxSaXN1ZXR8VHJ1Yml0fFVjaGl0fFRzdmV0eW90fFNodW1pdHxTaGNob2xrYWV0';
+
+            const specialChars = ['!', '@', '#', '$', '%', '&', '*', '?', '+', '='];
+
+            const decodeData = () => {
+                const ruWords = atob(_0x4a2b).split('|');
+                const enWords = atob(_0x7f9c).split('|');
+                const mapping = {};
+
+                const russianWords = [
+                    'Арбуз', 'Банан', 'Ветер', 'Город', 'Дерево', 'Ежик', 'Железо', 'Земля',
+                    'Иван', 'Книга', 'Лимон', 'Море', 'Небо', 'Облако', 'Птица', 'Река',
+                    'Солнце', 'Тигр', 'Утро', 'Фонарь', 'Холод', 'Цветок', 'Чашка', 'Школа',
+                    'Яблоко', 'Кричит', 'Привет', 'Бежит', 'Светит', 'Играет', 'Поёт', 'Читает',
+                    'Летит', 'Думает', 'Спешит', 'Танцует', 'Прыгает', 'Смеётся', 'Мечтает', 'Строит',
+                    'Апельсин', 'Берёза', 'Вишня', 'Гитара', 'Дождь', 'Енот', 'Жираф', 'Зима',
+                    'Ирис', 'Кактус', 'Лиса', 'Метель', 'Ночь', 'Осень', 'Пальма', 'Радуга',
+                    'Снег', 'Театр', 'Улица', 'Флаг', 'Хомяк', 'Цирк', 'Черника', 'Шарф',
+                    'Щенок', 'Эхо', 'Юрта', 'Ягода', 'Алмаз', 'Белка', 'Волна', 'Гроза',
+                    'Дельфин', 'Ёлка', 'Жемчуг', 'Замок', 'Игла', 'Камень', 'Лента', 'Месяц',
+                    'Носок', 'Орех', 'Песок', 'Ромашка', 'Сирень', 'Туман', 'Узор', 'Фонтан',
+                    'Хлеб', 'Цепь', 'Чайка', 'Шишка', 'Щит', 'Эму', 'Юла', 'Якорь',
+                    'Бабочка', 'Ворона', 'Гусь', 'Дятел', 'Жаба', 'Зебра', 'Крот', 'Лось',
+                    'Муха', 'Норка', 'Павлин', 'Рысь', 'Сова', 'Тюлень', 'Уж', 'Цапля',
+                    'Рисует', 'Трубит', 'Учит', 'Цветёт', 'Шумит', 'Щёлкает'
+                ];
+
+                russianWords.forEach((word, i) => {
+                    mapping[word] = enWords[i];
+                });
+
+                return { words: russianWords, trans: mapping };
+            };
+
+            const generatePassword = () => {
+                setIsGenerating(true);
+
+                setTimeout(() => {
+                    const { words: russianWords, trans: transcriptions } = decodeData();
+                    const numbers = Math.floor(100 + Math.random() * 900).toString();
+
+                    const shuffled = [...russianWords].sort(() => Math.random() - 0.5);
+                    const selectedWords = shuffled.slice(0, 3);
+
+                    const transWords = selectedWords.map(word => transcriptions[word]);
+                    const abbr = transWords.map(word =>
+                        word.charAt(0).toUpperCase() + word.slice(1, 3).toLowerCase()
+                    ).join('');
+
+                    const specialChar = specialChars[Math.floor(Math.random() * specialChars.length)];
+
+                    const newPassword = numbers + abbr + specialChar;
+
+                    setPassword(newPassword);
+                    setRussianPhrase(selectedWords.join(' '));
+                    setTranscription(transWords.join(' '));
+                    setAbbreviation(abbr);
+                    setCopied(false);
+                    setIsGenerating(false);
+                }, 400);
+            };
+
+            useEffect(() => {
+                generatePassword();
+            }, []);
+
+            const copyToClipboard = () => {
+                navigator.clipboard.writeText(password);
+                setCopied(true);
+                setTimeout(() => setCopied(false), 2000);
+            };
+
+            const highlightAbbreviation = () => {
+                const parts = transcription.split(' ');
+                return parts.map((word, index) => (
+                    React.createElement('span', { key: index },
+                        React.createElement('span', {
+                            className: "font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600"
+                        }, word.slice(0, 3)),
+                        React.createElement('span', { className: "text-gray-600" }, word.slice(3)),
+                        index < parts.length - 1 ? ' ' : ''
+                    )
+                ));
+            };
+
+            const Lock = ({ size, className }) => (
+                React.createElement('svg', {
+                    xmlns: "http://www.w3.org/2000/svg",
+                    width: size,
+                    height: size,
+                    viewBox: "0 0 24 24",
+                    fill: "none",
+                    stroke: "currentColor",
+                    strokeWidth: "2",
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    className: className
+                },
+                    React.createElement('rect', { width: "18", height: "11", x: "3", y: "11", rx: "2", ry: "2" }),
+                    React.createElement('path', { d: "M7 11V7a5 5 0 0 1 10 0v4" })
+                )
+            );
+
+            const Sparkles = ({ size, className }) => (
+                React.createElement('svg', {
+                    xmlns: "http://www.w3.org/2000/svg",
+                    width: size,
+                    height: size,
+                    viewBox: "0 0 24 24",
+                    fill: "none",
+                    stroke: "currentColor",
+                    strokeWidth: "2",
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    className: className
+                },
+                    React.createElement('path', { d: "m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" }),
+                    React.createElement('path', { d: "M5 3v4" }),
+                    React.createElement('path', { d: "M19 17v4" }),
+                    React.createElement('path', { d: "M3 5h4" }),
+                    React.createElement('path', { d: "M17 19h4" })
+                )
+            );
+
+            const Copy = ({ size }) => (
+                React.createElement('svg', {
+                    xmlns: "http://www.w3.org/2000/svg",
+                    width: size,
+                    height: size,
+                    viewBox: "0 0 24 24",
+                    fill: "none",
+                    stroke: "currentColor",
+                    strokeWidth: "2",
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round"
+                },
+                    React.createElement('rect', { width: "14", height: "14", x: "8", y: "8", rx: "2", ry: "2" }),
+                    React.createElement('path', { d: "M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" })
+                )
+            );
+
+            const RefreshCw = ({ size, className }) => (
+                React.createElement('svg', {
+                    xmlns: "http://www.w3.org/2000/svg",
+                    width: size,
+                    height: size,
+                    viewBox: "0 0 24 24",
+                    fill: "none",
+                    stroke: "currentColor",
+                    strokeWidth: "2",
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    className: className
+                },
+                    React.createElement('path', { d: "M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" }),
+                    React.createElement('path', { d: "M21 3v5h-5" }),
+                    React.createElement('path', { d: "M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" }),
+                    React.createElement('path', { d: "M8 16H3v5" })
+                )
+            );
+
+            const Check = ({ size, className }) => (
+                React.createElement('svg', {
+                    xmlns: "http://www.w3.org/2000/svg",
+                    width: size,
+                    height: size,
+                    viewBox: "0 0 24 24",
+                    fill: "none",
+                    stroke: "currentColor",
+                    strokeWidth: "2",
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    className: className
+                },
+                    React.createElement('path', { d: "M20 6 9 17l-5-5" })
+                )
+            );
+
+            return (
+                React.createElement('div', {
+                    className: "min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 flex items-center justify-center p-4 relative overflow-hidden"
+                },
+                    React.createElement('div', {
+                        className: "absolute inset-0 overflow-hidden pointer-events-none"
+                    },
+                        React.createElement('div', {
+                            className: "absolute top-20 left-10 w-72 h-72 bg-blue-100/40 rounded-full blur-3xl animate-pulse"
+                        }),
+                        React.createElement('div', {
+                            className: "absolute bottom-20 right-10 w-96 h-96 bg-indigo-100/30 rounded-full blur-3xl animate-pulse",
+                            style: { animationDelay: '1s' }
+                        }),
+                        React.createElement('div', {
+                            className: "absolute top-1/2 left-1/2 w-80 h-80 bg-slate-100/50 rounded-full blur-3xl animate-pulse",
+                            style: { animationDelay: '2s' }
+                        })
+                    ),
+                    React.createElement('div', {
+                        className: "w-full max-w-lg relative z-10"
+                    },
+                        React.createElement('div', {
+                            className: "backdrop-blur-xl bg-white/95 rounded-3xl shadow-2xl p-8 space-y-8 border border-white/20"
+                        },
+                            React.createElement('div', {
+                                className: "text-center space-y-3"
+                            },
+                                React.createElement('div', {
+                                    className: "inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-400 to-indigo-400 rounded-2xl shadow-lg mb-2"
+                                },
+                                    React.createElement(Lock, { className: "text-white", size: 32 })
+                                ),
+                                React.createElement('h1', {
+                                    className: "text-4xl font-bold bg-gradient-to-r from-slate-700 via-blue-700 to-indigo-700 bg-clip-text text-transparent"
+                                }, 'Генератор паролей'),
+                                React.createElement('p', {
+                                    className: "text-slate-600 text-sm flex items-center justify-center gap-1"
+                                },
+                                    React.createElement(Sparkles, { size: 16, className: "text-blue-400" }),
+                                    'Безопасные и запоминающиеся пароли'
+                                )
+                            ),
+                            React.createElement('div', {
+                                className: "relative group"
+                            },
+                                React.createElement('div', {
+                                    className: "absolute -inset-1 bg-gradient-to-r from-blue-300 via-indigo-300 to-slate-300 rounded-2xl blur opacity-20 group-hover:opacity-30 transition duration-300"
+                                }),
+                                React.createElement('div', {
+                                    className: "relative bg-gradient-to-br from-blue-400 via-indigo-400 to-slate-400 rounded-2xl p-8 shadow-xl"
+                                },
+                                    React.createElement('div', {
+                                        className: "text-center"
+                                    },
+                                        React.createElement('p', {
+                                            className: "text-white/90 text-xs font-semibold mb-3 uppercase tracking-wider flex items-center justify-center gap-2"
+                                        },
+                                            React.createElement(Lock, { size: 14 }),
+                                            'Ваш пароль'
+                                        ),
+                                        React.createElement('p', {
+                                            className: `text-white text-3xl font-mono font-bold tracking-wider break-all transition-all duration-300 ${isGenerating ? 'blur-sm scale-95' : 'blur-0 scale-100'}`
+                                        }, password)
+                                    )
+                                )
+                            ),
+                            React.createElement('div', {
+                                className: "grid grid-cols-2 gap-4"
+                            },
+                                React.createElement('button', {
+                                    onClick: copyToClipboard,
+                                    disabled: isGenerating,
+                                    className: "group bg-gradient-to-br from-emerald-400 to-teal-400 hover:from-emerald-500 hover:to-teal-500 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden"
+                                },
+                                    React.createElement('div', {
+                                        className: "absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+                                    }),
+                                    React.createElement('div', {
+                                        className: "relative flex items-center gap-2"
+                                    },
+                                        copied ? (
+                                            React.createElement(React.Fragment, null,
+                                                React.createElement(Check, { size: 20, className: "animate-bounce" }),
+                                                React.createElement('span', null, 'Скопировано!')
+                                            )
+                                        ) : (
+                                            React.createElement(React.Fragment, null,
+                                                React.createElement(Copy, { size: 20 }),
+                                                React.createElement('span', null, 'Скопировать')
+                                            )
+                                        )
+                                    )
+                                ),
+                                React.createElement('button', {
+                                    onClick: generatePassword,
+                                    disabled: isGenerating,
+                                    className: "group bg-gradient-to-br from-blue-400 to-indigo-400 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden"
+                                },
+                                    React.createElement('div', {
+                                        className: "absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+                                    }),
+                                    React.createElement('div', {
+                                        className: "relative flex items-center gap-2"
+                                    },
+                                        React.createElement(RefreshCw, { size: 20, className: isGenerating ? 'animate-spin' : '' }),
+                                        React.createElement('span', null, 'Обновить')
+                                    )
+                                )
+                            ),
+                            React.createElement('div', {
+                                className: "space-y-4"
+                            },
+                                React.createElement('div', {
+                                    className: "bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-6 border border-slate-200"
+                                },
+                                    React.createElement('div', {
+                                        className: "space-y-3"
+                                    },
+                                        React.createElement('div', null,
+                                            React.createElement('p', {
+                                                className: "text-xs font-bold text-blue-600 uppercase tracking-wider mb-2 flex items-center gap-1"
+                                            },
+                                                React.createElement('span', {
+                                                    className: "w-2 h-2 bg-blue-400 rounded-full"
+                                                }),
+                                                'Фраза'
+                                            ),
+                                            React.createElement('p', {
+                                                className: "text-slate-800 font-semibold text-lg"
+                                            }, russianPhrase)
+                                        ),
+                                        React.createElement('div', {
+                                            className: "h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent"
+                                        }),
+                                        React.createElement('div', null,
+                                            React.createElement('p', {
+                                                className: "text-xs font-bold text-indigo-600 uppercase tracking-wider mb-2 flex items-center gap-1"
+                                            },
+                                                React.createElement('span', {
+                                                    className: "w-2 h-2 bg-indigo-400 rounded-full"
+                                                }),
+                                                'Транскрипция'
+                                            ),
+                                            React.createElement('p', {
+                                                className: "text-slate-800 font-semibold text-lg"
+                                            }, highlightAbbreviation())
+                                        )
+                                    )
+                                ),
+                                React.createElement('div', {
+                                    className: "text-center"
+                                },
+                                    React.createElement('div', {
+                                        className: "inline-flex items-center gap-2 text-xs text-slate-600 bg-slate-100 px-4 py-2 rounded-full"
+                                    },
+                                        React.createElement('span', {
+                                            className: "w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse"
+                                        }),
+                                        React.createElement('span', null, 'Формат: 3 цифры + 9 букв + спецсимвол')
+                                    )
+                                )
+                            )
+                        )
+                    )
+                )
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(React.createElement(PasswordGenerator));
+    </script>
+</body>
+
+</html>

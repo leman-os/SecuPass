@@ -16,7 +16,7 @@ The principle of building a password is 3 random numbers, a combination of the f
 <img width="400"  alt="image" src="https://github.com/user-attachments/assets/56388c2d-2b08-4a20-b748-5aeb5046afd0" />
 
 
-Инструкция по запуску контейнера (Docker container start instruction)
+# Инструкция по запуску контейнера (Docker container start instruction)
 
 Первоначальный пароль администратора для входа в админпанель настраивается в Dockerfile
 ```

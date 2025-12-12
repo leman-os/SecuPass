@@ -78,7 +78,8 @@
 ![Генератор паролей](https://github.com/user-attachments/assets/e30eceaa-d3c7-4bca-9af8-6ec523349534)
 
 ### Админ-панель (управление сложностью)
-![Настройки сложности](https://github.com/user-attachments/assets/ead53ab0-3d83-43b5-85df-3b139039bd)
+![Настройки сложности](<img height="500" alt="image" src="https://github.com/user-attachments/assets/f41b35cc-3efb-4cfc-b4ac-fe2be816ddd5" />
+)
 
 ### Управление словарём слов
 ![Управление словарём](https://github.com/user-attachments/assets/56388c2d-2b08-4a20-b748-5aeb5046afd0)
@@ -87,7 +88,14 @@
 
 ## 🚀 Быстрый старт
 
-### Вариант 1: Docker Compose (рекомендуется)
+### Вариант 1
+
+```
+docker build -t password-generator .
+docker run -d -p 8080:80 --name passgen password-generator
+```
+
+### Вариант 2: Docker Compose
 
 Самый простой способ запустить все компоненты:
 
@@ -103,7 +111,7 @@ docker-compose up -d
 # http://localhost:8080
 ```
 
-### Вариант 2: Ручная сборка Docker образов
+### Вариант 3: Ручная сборка Docker образов
 
 ```bash
 # 1. Сборка фронтенда
@@ -116,7 +124,7 @@ docker build -f Dockerfile.backend -t secupass-backend:latest .
 docker build -t secupass-monolithic:latest .
 ```
 
-### Вариант 3: Разработка без Docker
+### Вариант 4: Разработка без Docker
 
 #### Запуск фронтенда:
 ```bash

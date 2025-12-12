@@ -38,6 +38,10 @@ COPY --from=backend-build /backend /app
 COPY nginx.conf /etc/nginx/http.d/default.conf
 COPY supervisord.conf /etc/supervisord.conf
 
+# Переменные окружения для админки (можно переопределить при запуске)
+ENV ADMIN_USERNAME=admin
+ENV ADMIN_PASSWORD=SecuPass2024!
+
 EXPOSE 80
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]

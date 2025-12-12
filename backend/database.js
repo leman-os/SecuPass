@@ -23,6 +23,19 @@ db.exec(`
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     word TEXT NOT NULL UNIQUE
   );
+
+  CREATE TABLE IF NOT EXISTS settings (
+    id INTEGER PRIMARY KEY,
+    letters_per_word INTEGER DEFAULT 3,
+    num_digits INTEGER DEFAULT 3,
+    num_special INTEGER DEFAULT 2
+  );
 `);
+
+// Инициализация настроек по умолчанию
+const existingSettings = db.prepare('SELECT * FROM settings WHERE id = 1').get();
+if (!existingSettings) {
+    db.prepare('INSERT INTO settings (id, letters_per_word, num_digits, num_special) VALUES (1, 3, 3, 2)').run();
+}
 
 export default db;

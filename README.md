@@ -78,11 +78,11 @@
 ![Генератор паролей](https://github.com/user-attachments/assets/e30eceaa-d3c7-4bca-9af8-6ec523349534)
 
 ### Админ-панель (управление сложностью)
-![Настройки сложности](<img height="500" alt="image" src="https://github.com/user-attachments/assets/f41b35cc-3efb-4cfc-b4ac-fe2be816ddd5" />
-)
+<img height="500" alt="image" src="https://github.com/user-attachments/assets/f41b35cc-3efb-4cfc-b4ac-fe2be816ddd5" />
 
 ### Управление словарём слов
-![Управление словарём](https://github.com/user-attachments/assets/56388c2d-2b08-4a20-b748-5aeb5046afd0)
+<img height="500" alt="image" src="https://github.com/user-attachments/assets/65a83650-b2eb-40f5-a11f-d9831e2eb5b8" />
+
 
 ---
 

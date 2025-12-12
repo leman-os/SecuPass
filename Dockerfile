@@ -10,53 +10,59 @@ RUN npm run build
 # Stage 2: Build Backend
 FROM node:20-alpine AS backend-build
 
+# Установка зависимостей для компиляции better-sqlite3
+RUN apk add --no-cache python3 make g++
+
 WORKDIR /backend
 COPY backend/package*.json ./
-RUN npm install --production
+RUN npm install
 COPY backend/ ./
 RUN node init-db.js
 
 # Stage 3: Final image
-FROM nginx:alpine
+FROM node:20-alpine
 
-# Установка Node.js для backend
-RUN apk add --no-cache nodejs npm
+# Установка nginx и supervisor
+RUN apk add --no-cache nginx supervisor
+
+# Создание директорий
+RUN mkdir -p /run/nginx /var/log/supervisor
 
 # Копирование frontend
 COPY --from=frontend-build /frontend/dist /usr/share/nginx/html
 
-# Копирование backend
+# Копирование backend (включая node_modules и скомпилированный sqlite)
 COPY --from=backend-build /backend /app
 
 # Nginx конфигурация
-COPY <<EOF /etc/nginx/conf.d/default.conf
+RUN cat > /etc/nginx/http.d/default.conf << 'EOF'
 server {
     listen 80;
     root /usr/share/nginx/html;
     index index.html;
 
     location / {
-        try_files \$uri \$uri/ /index.html;
+        try_files $uri $uri/ /index.html;
     }
 
     location /api {
-        proxy_pass http://localhost:3001;
+        proxy_pass http://127.0.0.1:3001;
         proxy_http_version 1.1;
-        proxy_set_header Upgrade \$http_upgrade;
+        proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
-        proxy_set_header Host \$host;
-        proxy_cache_bypass \$http_upgrade;
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
     }
 }
 EOF
 
-# Supervisor для запуска обоих сервисов
-RUN apk add --no-cache supervisor
-
-COPY <<EOF /etc/supervisor/conf.d/supervisord.conf
+# Supervisor конфигурация
+RUN cat > /etc/supervisord.conf << 'EOF'
 [supervisord]
 nodaemon=true
 user=root
+logfile=/var/log/supervisor/supervisord.log
+pidfile=/var/run/supervisord.pid
 
 [program:backend]
 command=node /app/server.js
@@ -80,4 +86,4 @@ EOF
 
 EXPOSE 80
 
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
